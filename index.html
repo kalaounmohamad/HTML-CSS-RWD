@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creohub</title>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        height: 100vh;
+      }
+
+      .intro {
+        height: 100%;
+        max-height: 900px;
+        background-image: url("banner-image.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+      }
+      /* Navbar styles */
+      header {
+        background-color: #333;
+        padding: 10px;
+        text-align: center;
+        color: #fff;
+        height: auto;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 2000px;
+        margin-right: auto;
+        margin-left: auto;
+        flex-wrap: wrap;
+      }
+
+      .logo {
+        width: 100px;
+        margin: 0 10px;
+      }
+
+      .logo:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+      }
+
+      .burger-menu {
+        display: none;
+        cursor: pointer;
+        margin-left: auto;
+      }
+
+      .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #fff;
+        margin: 6px 0;
+        transition: 0.4s;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin-left: auto;
+      }
+
+      .nav-links li {
+        margin: 0 15px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #fff;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .nav-links a:hover {
+        color: #0000ff;
+      }
+
+      #nav-links-2 {
+        display: none;
+        list-style: none;
+        padding: 0;
+        margin-left: auto;
+        flex-direction: column;
+        text-align: left;
+      }
+
+      .nav-links-2 li {
+        margin: 15px;
+      }
+
+      .nav-links-2 a {
+        text-decoration: none;
+        color: #fff;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .nav-links-2 a:hover {
+        color: #0000ff;
+      }
+
+      /* Banner styles */
+      .banner {
+        color: #fff;
+        flex: 1;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .banner button {
+        text-decoration: none;
+        padding: 8px 16px;
+        padding: 10px 20px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .banner button:hover {
+        background-color: #555;
+      }
+
+      /* Section styles */
+
+      .body-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+
+      .card {
+        width: 325px;
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        margin: 20px;
+      }
+
+      .card:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+      }
+
+      .card img {
+        width: 100%;
+        height: auto;
+      }
+
+      .card-content {
+        padding: 15px;
+      }
+
+      .card-content p {
+        color: #666;
+        font-size: 15px;
+        margin-bottom: 30px;
+      }
+
+      .button {
+        text-decoration: none;
+        padding: 8px 16px;
+        background-color: #333;
+        color: #fff;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        margin: 10px 0;
+      }
+
+      .button:hover {
+        background-color: #555;
+      }
+
+      /* Form styles */
+      .form {
+        text-align: center;
+        width: 500px;
+      }
+
+      .form label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: normal; /* Change font weight */
+        text-align: left;
+      }
+
+      .form input {
+        width: 95%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+
+      /* Footer styles */
+      .footer {
+        background-color: #333;
+      }
+
+      .footer-nav {
+        max-width: 2000px;
+        margin-right: auto;
+        margin-left: auto;
+        color: #fff;
+        text-align: center;
+        padding: 20px 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .footer-links a {
+        color: #fff;
+        margin: 10px;
+        transition: color 0.3s ease-in-out;
+        white-space: nowrap;
+      }
+
+      .footer-links a:hover {
+        color: #0000ff; /* Change color on hover */
+      }
+
+      .social-icons img {
+        width: 30px;
+        margin: 0 5px;
+      }
+
+      .social-icons img:hover {
+        transform: scale(1.2);
+      }
+
+      @media screen and (max-width: 460px) {
+        /* nav {
+          flex-direction: column;
+          text-align: center;
+        } */
+
+        nav {
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        .logo {
+          margin: 10px;
+          margin-right: auto;
+        }
+
+        .burger-menu {
+          display: block;
+        }
+
+        #nav-links {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          flex-basis: 100%;
+        }
+
+        .nav-links li {
+          margin: 10px 0;
+        }
+
+        .nav-links-2 li {
+          margin: 10px 0;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .form {
+          width: 80%;
+        }
+
+        .footer-nav {
+          padding: 5px;
+        }
+
+        .logo,
+        .social-icons {
+          order: 1;
+          justify-content: space-between;
+        }
+
+        .social-icons {
+          margin-left: 130px;
+        }
+
+        .footer-links {
+          order: 3;
+          justify-content: space-between;
+          margin-right: auto;
+          margin-left: auto;
+        }
+      }
+
+      @media screen and (max-width: 520px) {
+        .social-icons {
+          margin-left: 0;
+        }
+      }
+
+      @media screen and (max-width: 380px) {
+        .card {
+          width: 80%;
+          background-color: #fff;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+          margin: 20px;
+        }
+
+        .footer-nav {
+          margin-right: auto;
+          margin-left: auto;
+          color: #fff;
+          text-align: center;
+          padding: 10px;
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+
+        .logo {
+          margin: 0;
+        }
+
+        .social-icons {
+          margin-top: 20px;
+        }
+        .footer-links {
+          flex-grow: 1; /* Add this line to make .footer-links fill the remaining space */
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+    </style>
+    <!-- 
+    <script>
+      function toggleMenu() {
+        var y = document.getElementById("nav-links-2");
+
+        if (y.style.display === "flex") {
+          y.style.display = "none";
+        } else {
+          y.style.display = "flex";
+        }
+      }
+    </script> -->
+
+    <script>
+      function toggleMenu() {
+        var y = document.getElementById("nav-links-2");
+        var windowWidth = window.innerWidth;
+
+        if (y.style.display === "flex" || windowWidth > 460) {
+          y.style.display = "none";
+        } else {
+          y.style.display = "flex";
+        }
+      }
+
+      // Event listener to hide nav-links-2 if window is resized
+      window.addEventListener("resize", function () {
+        var y = document.getElementById("nav-links-2");
+        var windowWidth = window.innerWidth;
+
+        if (windowWidth > 460) {
+          y.style.display = "none";
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div class="intro">
+      <!-- Navbar -->
+      <header>
+        <nav>
+          <a href="#">
+            <img src="logo.jpg" alt="Logo" class="logo" />
+          </a>
+          <a
+            href="javascript:void(0);"
+            class="burger-menu"
+            onclick="toggleMenu()"
+          >
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </a>
+          <div>
+            <ul class="nav-links" id="nav-links">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </nav>
+        <div>
+          <ul class="nav-links-2" id="nav-links-2">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </header>
+
+      <!-- Banner -->
+      <div class="banner">
+        <h1>Creohub Task#1</h1>
+        <button>Learn More</button>
+      </div>
+    </div>
+
+    <div class="body-container">
+      <!-- Section with Images and Text Overlays -->
+      <div class="card-container">
+        <div class="card">
+          <img src="image1.jpeg" alt="Image 1" />
+          <div class="card-content">
+            <h3>Image 1 Title</h3>
+            <p>Description for Image 1.</p>
+
+            <button class="button">Read More</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="image1.jpeg" alt="Image 1" />
+          <div class="card-content">
+            <h3>Image 1 Title</h3>
+            <p>Description for Image 1.</p>
+            <button class="button">Read More</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="image1.jpeg" alt="Image 1" />
+          <div class="card-content">
+            <h3>Image 1 Title</h3>
+            <p>Description for Image 1.</p>
+            <button class="button">Read More</button>
+          </div>
+        </div>
+      </div>
+
+      <form class="form">
+        <h2>Contact Us</h2>
+        <label for="name">Name:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Your Name"
+          required
+        />
+
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Your Email"
+          required
+        />
+
+        <label for="message">Message:</label>
+        <input
+          id="message"
+          name="message"
+          placeholder="Your Message"
+          required
+        />
+
+        <button type="submit" class="button">Submit</button>
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-nav">
+        <img src="logo.jpg" alt="Company Logo" class="logo" />
+        <div class="footer-links">
+          <a href="#" id="privacy-policy">Privacy Policy</a>
+          <a href="#" id="terms">Terms of Service</a>
+        </div>
+        <div class="social-icons">
+          <a href="https://www.facebook.com" target="_blank">
+            <img src="facebook.png" alt="Facebook Icon" />
+          </a>
+          <a href="https://www.x.com" target="_blank">
+            <img src="X.png" alt="X Icon" />
+          </a>
+          <a href="https://www.instagram.com" target="_blank">
+            <img src="instagram.jpeg" alt="Instagram Icon" />
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
